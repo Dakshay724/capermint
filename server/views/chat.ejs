@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Real-time Chat</title>
+    <style>
+      h1 {
+        color: #333;
+        font-size: 24px;
+      }
+
+      .message-box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      ul#messages {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul#messages li {
+        margin-bottom: 10px;
+      }
+
+      form#chatForm {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      input#inputMessage {
+        width: 200px;
+        padding: 5px;
+        margin-right: 10px;
+      }
+
+      button[type="submit"] {
+        padding: 5px 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const socket = io();
+
+        // Listen for chat message event
+        socket.on("chat message", (msg) => {
+          const $messages = $("#messages");
+          const $messageBox = $(".message-box");
+          const shouldScroll =
+            $messages.scrollTop() + $messages.innerHeight() ===
+            $messages[0].scrollHeight;
+
+          $messages.append($("<li>").text(msg));
+
+          if (shouldScroll) {
+            $messageBox.scrollTop($messageBox[0].scrollHeight);
+          }
+        });
+
+        // Submit chat message
+        $("#chatForm").submit((e) => {
+          e.preventDefault();
+          const message = $("#inputMessage").val();
+          socket.emit("chat message", message);
+          $("#inputMessage").val("");
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1><%= name %>!</h1>
+    <div class="message-box">
+      <ul id="messages">
+        <% messages.forEach(function(message) { %>
+        <li><%= message %></li>
+        <% }); %>
+      </ul>
+    </div>
+    <form id="chatForm">
+      <input id="inputMessage" autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,568 @@
+{
+	"info": {
+		"_postman_id": "741847c9-e407-4f4a-973d-d471436a1b72",
+		"name": "caperMint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20324879"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"akshay\", \"email\":\"dakshay724@gmail.com\", \"phone\":9766619238, \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}users/createUser",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logOutUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTU5MTZjZTc0YjJlNzAxNWEwNzYyMSIsImVtYWlsIjoiZGFrc2hheTcyNEBnbWFpbC5jb20iLCJpYXQiOjE2ODc1MjY1MjUsImV4cCI6MTY4ODEzMTMyNX0.XrEAfJHk2n_Tz26hDO_EfO1Se3PsHsN7KenfRfaogec",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}users/logout",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"email\":\"dakshay724@gmail.com\",\r\n     \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}users/loginUser",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"loginUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewProfile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}users/viewProfile",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"viewProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"akshay darade\", \"email\":\"dakshay724@gmail.com\", \"password\":\"123456789\", \"phone\":\"9766619238\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}users/updateProfile",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"updateProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users/getAllUsers",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "createCategories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    //for create parent category\r\n    // \"name\":\"kitchen\"\r\n\r\n    // for create child categories\r\n     \"name\":\"utensil\",\"parentId\":\"649727b0bca33b36aade1c3f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}categories/createCategory",
+							"host": [
+								"{{baseUrl}}categories"
+							],
+							"path": [
+								"createCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}categories/getCategory",
+							"host": [
+								"{{baseUrl}}categories"
+							],
+							"path": [
+								"getCategory"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "6496e413661dc807ae18d4c0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategories",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kitchen home appliances\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}categories/updateCategory?categoryId=649727b0bca33b36aade1c3f",
+							"host": [
+								"{{baseUrl}}categories"
+							],
+							"path": [
+								"updateCategory"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "649727b0bca33b36aade1c3f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}categories/deleteCategory?categoryId=64972850bca33b36aade1c50",
+							"host": [
+								"{{baseUrl}}categories"
+							],
+							"path": [
+								"deleteCategory"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "64972850bca33b36aade1c50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categoriesByParentId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}categories/categoriesByParentId?categoryId=6496e413661dc807ae18d4c0",
+							"host": [
+								"{{baseUrl}}categories"
+							],
+							"path": [
+								"categoriesByParentId"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "6496e413661dc807ae18d4c0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "createProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "tawa",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "sharp edge knife",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/AKSHAY/Downloads/sample5.jpg"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/AKSHAY/Downloads/sample2.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}products/createProduct?categoryId=649727e8bca33b36aade1c45",
+							"host": [
+								"{{baseUrl}}products"
+							],
+							"path": [
+								"createProduct"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "649727e8bca33b36aade1c45"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}products/deleteProduct?productId=64972996bca33b36aade1c68",
+							"host": [
+								"{{baseUrl}}products"
+							],
+							"path": [
+								"deleteProduct"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "64972996bca33b36aade1c68"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/AKSHAY/Downloads/sample3.jpg"
+								},
+								{
+									"key": "description",
+									"value": "changing the description ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}products/updateProduct?categoryId=649727e8bca33b36aade1c45&productId=64972996bca33b36aade1c68",
+							"host": [
+								"{{baseUrl}}products"
+							],
+							"path": [
+								"updateProduct"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "649727e8bca33b36aade1c45"
+								},
+								{
+									"key": "productId",
+									"value": "64972996bca33b36aade1c68"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchProduct",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}products/searchProduct?title=f",
+							"host": [
+								"{{baseUrl}}products"
+							],
+							"path": [
+								"searchProduct"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProduct",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}products/getProduct",
+							"host": [
+								"{{baseUrl}}products"
+							],
+							"path": [
+								"getProduct"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "6496e44b661dc807ae18d4c6",
+									"disabled": true
+								},
+								{
+									"key": "productId",
+									"value": "6496c3025bd158d76094c329",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/api/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTcyNmFlYmNhMzNiMzZhYWRlMWMzMSIsImVtYWlsIjoiZGFrc2hheTcyNEBnbWFpbC5jb20iLCJpYXQiOjE2ODc2Mjc0NzEsImV4cCI6MTY4ODIzMjI3MX0.Mr4tPsklTJ3MQ4ngn6oVFBiDbxnF6uKP7bSmhlUGVuA",
+			"type": "string"
+		}
+	]
+}
